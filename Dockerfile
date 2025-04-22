@@ -1,5 +1,11 @@
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jdk AS jar_builder
 
-COPY ./build/libs/eureka-server-0.0.1-SNAPSHOT.jar eureka-server.jar
+COPY . .
 
-ENTRYPOINT ["java", "-jar", "eureka-server.jar"]
+RUN ./gradlew clean bootJar
+
+FROM eclipse-temurin:17-jre
+
+COPY --from=jar_builder /build/libs/*jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

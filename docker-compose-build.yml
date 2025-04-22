@@ -1,5 +1,0 @@
-services:
-  eureka-server:
-    build:
-      dockerfile: Dockerfile
-    image: chokyuseong/eureka-server:latest

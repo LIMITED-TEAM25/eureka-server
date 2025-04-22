@@ -1,17 +1,10 @@
 spring:
   config:
-    import: optional:file:.env[.properties]
+    import:
+      - optional:file:.env[.properties]
+      - classpath:properties/eureka-server.yml
+      - classpath:properties/server.yml
   application:
     name: eureka-server
-
-server:
-  port: 19090
-
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:19090/eureka/
-  instance:
-    hostname: ${EUREKA_SERVER_HOSTNAME}
+  profiles:
+    active: local

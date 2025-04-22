@@ -1,0 +1,19 @@
+spring:
+  config.activate.on-profile: local
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL}
+
+---
+
+spring:
+  config.activate.on-profile: docker
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: ${DOCKER_EUREKA_SERVER_URL}
