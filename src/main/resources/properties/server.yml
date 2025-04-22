@@ -1,0 +1,11 @@
+spring:
+  config.activate.on-profile: local
+server:
+  port: ${SERVER_PORT}
+
+---
+
+spring:
+  config.activate.on-profile: docker
+server:
+  port: ${DOCKER_SERVER_PORT}
