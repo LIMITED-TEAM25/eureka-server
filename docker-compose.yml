@@ -1,0 +1,21 @@
+services:
+  eureka-server:
+    container_name: eureka-server
+    image: chokyuseong/eureka-server:latest
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '19090:19090'
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    mem_limit: 1024mb
+    cpus: 0.5
+    networks:
+      - limited-team25
+
+networks:
+  limited-team25:
+    external: true
